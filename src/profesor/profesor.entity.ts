@@ -6,7 +6,7 @@ export class Profesor{
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({unique: true})
     numeroCedula: number;
 
     @Column()
