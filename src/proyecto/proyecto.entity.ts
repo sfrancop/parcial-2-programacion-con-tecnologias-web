@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Estudiante } from "src/estudiante/estudiante.entity";
+import { Propuesta } from "src/propuesta/propuesta.entity";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({'name': 'proyecto'})
 export class Proyecto{
@@ -13,4 +15,11 @@ export class Proyecto{
 
     @Column()
     url: string;
+
+    @OneToOne(() => Estudiante, estudiante => estudiante.proyecto, {nullable: true})
+    estudiante: Estudiante;
+
+    @OneToOne(() => Propuesta, propuesta => propuesta.proyecto, {nullable: true})
+    propuesta: Propuesta;
+
 }

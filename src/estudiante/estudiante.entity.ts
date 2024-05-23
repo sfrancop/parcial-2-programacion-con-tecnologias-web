@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Proyecto } from "src/proyecto/proyecto.entity";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({'name': 'estudiante'})
 export class Estudiante{
@@ -13,4 +14,8 @@ export class Estudiante{
 
     @Column()
     creditosAprobados: number;
+
+    @OneToOne(() => Proyecto, proyecto => proyecto.estudiante, {nullable: true})
+    @JoinColumn()
+    proyecto: Proyecto;
 }
