@@ -24,6 +24,8 @@ export class PropuestaService {
             where:{
                 id: id
             }
+            ,
+            relations:['profesor', 'proyecto']
         })
     }
 
