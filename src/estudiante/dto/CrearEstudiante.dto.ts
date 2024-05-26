@@ -1,8 +1,7 @@
-import { Proyecto } from "src/proyecto/proyecto.entity";
+import { CrearProyectoDTO } from "src/proyecto/dto/crear-proyecto.dto";
 
 export class CrearEstudianteDTO{
     nombre: string;
     codigoEstudiante: string
-    creditosAprobados: number;
-    proyecto?: Proyecto;
+    creditosAprobados: number
 }

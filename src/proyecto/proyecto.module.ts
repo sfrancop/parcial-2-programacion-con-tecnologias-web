@@ -7,6 +7,7 @@ import { ProyectoController } from './proyecto.controller';
 @Module({
     imports: [TypeOrmModule.forFeature([Proyecto])],
     providers: [ProyectoService],
+    exports: [ProyectoService],
     controllers: [ProyectoController],
 })
 export class ProyectoModule {}

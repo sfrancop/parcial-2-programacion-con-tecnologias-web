@@ -17,6 +17,7 @@ export class Proyecto{
     url: string;
 
     @OneToOne(() => Estudiante, estudiante => estudiante.proyecto, {nullable: true})
+    @JoinColumn()
     estudiante: Estudiante;
 
     @OneToOne(() => Propuesta, propuesta => propuesta.proyecto, {nullable: true})
