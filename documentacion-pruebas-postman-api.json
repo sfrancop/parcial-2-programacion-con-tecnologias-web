@@ -1,0 +1,1768 @@
+{
+	"info": {
+		"_postman_id": "f46ec30f-8bcd-4017-aea9-c912daa2f9cb",
+		"name": "Parcial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21541309",
+		"_collection_link": "https://planetary-comet-254224.postman.co/workspace/Team-Workspace~d63ce303-d2c7-42a8-8736-7dc49f0c141e/collection/21541309-f46ec30f-8bcd-4017-aea9-c912daa2f9cb?action=share&source=collection_link&creator=21541309"
+	},
+	"item": [
+		{
+			"name": "Profesor",
+			"item": [
+				{
+					"name": "Crear profesor con grupo valido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"profesor_id\", data.id);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroCedula\": 1099,\r\n    \"nombre\": \"Felipe Caraballo\",\r\n    \"grupoInvestigacion\": \"TICSW\",\r\n    \"numeroExtension\": 314\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profesores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profesores"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear profesor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numeroCedula\": 1088394109,\r\n    \"nombre\": \"Juan Caraballo\",\r\n    \"grupoInvestigacion\": \"TICSW\",\r\n    \"numeroExtension\": 314\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/profesores",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"profesores"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"numeroCedula\": 1088394109,\r\n    \"nombre\": \"Juan Caraballo\",\r\n    \"grupoInvestigacion\": \"TICSW\",\r\n    \"numeroExtension\": 314,\r\n    \"id\": 4\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear profesor con grupo invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"   pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"numeroCedula\": 1088394109,\r\n    \"nombre\": \"Juan Caraballo\",\r\n    \"grupoInvestigacion\": \"ANOVA\",\r\n    \"numeroExtension\": 314\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profesores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profesores"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear profesor",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numeroCedula\": 1088394109,\r\n    \"nombre\": \"Juan Caraballo\",\r\n    \"grupoInvestigacion\": \"TICSW\",\r\n    \"numeroExtension\": 314\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/profesores",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"profesores"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"statusCode\": 400,\r\n    \"message\": \"El grupo de investigación debe estar entre los siguientes valores: TICSW, IMAGINE o COMIT \"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar profesor sin proyecto por id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profesores/id/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profesores",
+								"id",
+								"5"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar profesor sin proyecto por id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/profesores/id/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"profesores",
+										"id",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"raw\": [],\r\n    \"affected\": 1\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar profesor sin proyecto por cedula",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profesores/cedula/1099",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profesores",
+								"cedula",
+								"1099"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar profesor sin proyecto por cedula",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/profesores/cedula/1088394109",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"profesores",
+										"cedula",
+										"1088394109"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"raw\": [],\r\n    \"affected\": 1\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar profesor con proyecto por id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"   pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profesores/id/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profesores",
+								"id",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar profesor con proyecto por id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/profesores/id/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"profesores",
+										"id",
+										"4"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"statusCode\": 400,\r\n    \"message\": \"El profesor no se puede eliminar porque tiene una propuesta que tiene un proyecto asociado\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar profesor con proyecto por cedula",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"   pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profesores/cedula/1088236109",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profesores",
+								"cedula",
+								"1088236109"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar profesor con proyecto por cedula",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/profesores/cedula/1088236109",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"profesores",
+										"cedula",
+										"1088236109"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"statusCode\": 400,\r\n    \"message\": \"El profesor no se puede eliminar porque tiene una propuesta que tiene un proyecto asociado\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener profesor por id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Este test es importante ya que se debe verificar que cuando se trata de traer un elemento por id el resultado sea solo un objeto ya que los ids deben ser unicos\r",
+									"pm.test('Is not a list', function () {\r",
+									"   var data = pm.response.json()\r",
+									"   pm.expect(data.id).to.exist\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profesores/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profesores",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener profesor por id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/profesores/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"profesores",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "245"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f5-prO1d9D6CUw3nIA47bqWbY2Gi6U\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 23:22:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"numeroCedula\": 1088236109,\n    \"nombre\": \"Sergio Franco Pineda\",\n    \"grupoInvestigacion\": \"IMAGINE\",\n    \"numeroExtension\": 314,\n    \"propuestas\": [\n        {\n            \"id\": 1,\n            \"titulo\": \"Enlace por personalidades\",\n            \"descripcion\": \"Proyecto de ML\",\n            \"palabraClave\": \"Machine Learning\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Propuesta",
+			"item": [
+				{
+					"name": "Crear propuesta invalida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"   pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"\",\r\n    \"descripcion\": \"Automatizacion de pruebas\",\r\n    \"palabraClave\": \"Software\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/propuestas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"propuestas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear propuesta invalida",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"\",\r\n    \"descripcion\": \"Automatizacion de pruebas\",\r\n    \"palabraClave\": \"Software\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/propuestas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"propuestas"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"statusCode\": 400,\r\n    \"message\": \"El título de la propuesta no puede estar vacio\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear propuesta valida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titulo\": \"Automatizacion de pruebas\",\r\n    \"descripcion\": \"Automatizacion de pruebas\",\r\n    \"palabraClave\": \"Software\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/propuestas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"propuestas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear propuesta valida",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"titulo\": \"Automatizacion de pruebas\",\r\n    \"descripcion\": \"Automatizacion de pruebas\",\r\n    \"palabraClave\": \"Software\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/propuestas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"propuestas"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"titulo\": \"Automatizacion de pruebas\",\r\n    \"descripcion\": \"Automatizacion de pruebas\",\r\n    \"palabraClave\": \"Software\",\r\n    \"id\": 3\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener propuestas",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Este test es importante ya que se debe verificar que cuando se trata de traer varios elementos el resultado sea una lista que tenga el atributo length, sin embargo, no se verifica que haya más de 0 elementos porque no hay problema que hayan 0 elementos\r",
+									"pm.test('Number of museums > ' + 0, function () {\r",
+									"   var data = pm.response.json()\r",
+									"   pm.expect(data.length).to.gte(0)\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/propuestas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"propuestas"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener propuestas",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/propuestas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"propuestas"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "[\r\n    {\r\n        \"id\": 1,\r\n        \"titulo\": \"Enlace por personalidades\",\r\n        \"descripcion\": \"Proyecto de ML\",\r\n        \"palabraClave\": \"Machine Learning\",\r\n        \"profesor\": {\r\n            \"id\": 1,\r\n            \"numeroCedula\": 1088236109,\r\n            \"nombre\": \"Sergio Franco Pineda\",\r\n            \"grupoInvestigacion\": \"IMAGINE\",\r\n            \"numeroExtension\": 314\r\n        },\r\n        \"proyecto\": {\r\n            \"id\": 1,\r\n            \"fechaInicio\": \"2024-06-01\",\r\n            \"fechaFin\": \"2024-12-01\",\r\n            \"url\": \"https://roomatch.com\"\r\n        }\r\n    }\r\n]"
+						}
+					]
+				},
+				{
+					"name": "Obtener propuesta por id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Este test es importante ya que se debe verificar que cuando se trata de traer un elemento por id el resultado sea solo un objeto ya que los ids deben ser unicos\r",
+									"pm.test('Is not a list', function () {\r",
+									"   var data = pm.response.json()\r",
+									"   pm.expect(data.id).to.exist\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/propuestas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"propuestas",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener propuesta por id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/propuestas/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"propuestas",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"id\": 1,\r\n    \"titulo\": \"Enlace por personalidades\",\r\n    \"descripcion\": \"Proyecto de ML\",\r\n    \"palabraClave\": \"Machine Learning\",\r\n    \"profesor\": {\r\n        \"id\": 1,\r\n        \"numeroCedula\": 1088236109,\r\n        \"nombre\": \"Sergio Franco Pineda\",\r\n        \"grupoInvestigacion\": \"IMAGINE\",\r\n        \"numeroExtension\": 314\r\n    },\r\n    \"proyecto\": {\r\n        \"id\": 1,\r\n        \"fechaInicio\": \"2024-06-01\",\r\n        \"fechaFin\": \"2024-12-01\",\r\n        \"url\": \"https://roomatch.com\"\r\n    }\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar propuesta con proyecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"   pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/propuestas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"propuestas",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar propuesta con proyecto",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/propuestas/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"propuestas",
+										"1"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"statusCode\": 400,\r\n    \"message\": \"La propuesta no se puede eliminar porque tiene un proyecto asociado\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Eliminar propuesta sin proyecto",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"   pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/propuestas/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"propuestas",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Eliminar propuesta sin proyecto",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/propuestas/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"propuestas",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"raw\": [],\r\n    \"affected\": 1\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Estudiante",
+			"item": [
+				{
+					"name": "Crear estudiante invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"   pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Natally Romero\",\r\n    \"codigoEstudiante\": \"20211661\",\r\n    \"creditosAprobados\": 68\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/estudiantes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"estudiantes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear estudiante invalido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Natally Romero\",\r\n    \"codigoEstudiante\": \"202116614\",\r\n    \"creditosAprobados\": 68\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/estudiantes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"estudiantes"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"statusCode\": 400,\r\n    \"message\": \"El código del estudiante debe tener 10 caracteres\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear estudiante valido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Natally Romero\",\r\n    \"codigoEstudiante\": \"2021166141\",\r\n    \"creditosAprobados\": 68\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/estudiantes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"estudiantes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear estudiante invalido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Natally Romero\",\r\n    \"codigoEstudiante\": \"2021166141\",\r\n    \"creditosAprobados\": 68\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/estudiantes",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"estudiantes"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"nombre\": \"Natally Romero\",\r\n    \"codigoEstudiante\": \"2021166141\",\r\n    \"creditosAprobados\": 68,\r\n    \"id\": 5\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener estudiante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Este test es importante ya que se debe verificar que cuando se trata de traer un elemento por id el resultado sea solo un objeto ya que los ids deben ser unicos\r",
+									"pm.test('Is not a list', function () {\r",
+									"   var data = pm.response.json()\r",
+									"   pm.expect(data.id).to.exist\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/estudiantes/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"estudiantes",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener estudiante",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/estudiantes/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"estudiantes",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"id\": 4,\r\n    \"nombre\": \"Natally Romero\",\r\n    \"codigoEstudiante\": \"2021166141\",\r\n    \"creditosAprobados\": 68,\r\n    \"proyecto\": {\r\n        \"id\": 1,\r\n        \"fechaInicio\": \"2024-06-01\",\r\n        \"fechaFin\": \"2024-12-01\",\r\n        \"url\": \"https://roomatch.com\"\r\n    }\r\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Proyecto-Estudiante",
+			"item": [
+				{
+					"name": "Enlazar proyecto y estudiante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/estudiantes/4/proyecto/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"estudiantes",
+								"4",
+								"proyecto",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Enlazar proyecto y estudiante",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/estudiantes/4/proyecto/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"estudiantes",
+										"4",
+										"proyecto",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-mp76xueJwuBg6SC3F/3HJjTMrec\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 19:46:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"generatedMaps\": [],\n    \"raw\": [],\n    \"affected\": 1\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Proyecto",
+			"item": [
+				{
+					"name": "Crear proyecto invalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"   pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaInicio\": \"2025/06/01\",\r\n    \"fechaFin\": \"2024/12/01\",\r\n    \"url\": \"https://roomatch.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/proyectos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"proyectos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear proyecto invalido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fechaInicio\": \"2025/06/01\",\r\n    \"fechaFin\": \"2024/12/01\",\r\n    \"url\": \"https://roomatch.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/proyectos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"proyectos"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\r\n    \"statusCode\": 400,\r\n    \"message\": \"La fecha de fin debe ser mayor a la fecha de inicio\"\r\n}"
+						}
+					]
+				},
+				{
+					"name": "Crear proyecto valido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"   pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaInicio\": \"2024/06/01\",\r\n    \"fechaFin\": \"2024/12/01\",\r\n    \"url\": \"https://roomatch.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/proyectos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"proyectos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear proyecto valido",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fechaInicio\": \"2024/06/01\",\r\n    \"fechaFin\": \"2024/12/01\",\r\n    \"url\": \"https://roomatch.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/proyectos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"proyectos"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "88"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"58-FCxshkfUtegy3VJ3scSLj56N36g\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 22:26:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"fechaInicio\": \"2024/06/01\",\n    \"fechaFin\": \"2024/12/01\",\n    \"url\": \"https://roomatch.com\",\n    \"id\": 2\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Profesor-Propuesta",
+			"item": [
+				{
+					"name": "Enlazar profesor y propuesta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/profesores/4/propuesta/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"profesores",
+								"4",
+								"propuesta",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Enlazar profesor y propuesta",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/profesores/4/propuesta/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"profesores",
+										"4",
+										"propuesta",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-mp76xueJwuBg6SC3F/3HJjTMrec\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 20:28:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"generatedMaps\": [],\n    \"raw\": [],\n    \"affected\": 1\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Proyecto-Propuesta",
+			"item": [
+				{
+					"name": "Enlazar proyecto y propuesta",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Este test es importante ya los códdigos devuelto por la petición deben ser los correctos para cada escenario\r",
+									"var data = pm.response.json()\r",
+									"pm.globals.set(\"museum_id\", data.id);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"   pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/propuestas/1/proyecto/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"propuestas",
+								"1",
+								"proyecto",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Enlazar profesor y propuesta",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/propuestas/1/proyecto/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"propuestas",
+										"1",
+										"proyecto",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-mp76xueJwuBg6SC3F/3HJjTMrec\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 26 May 2024 19:34:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"generatedMaps\": [],\n    \"raw\": [],\n    \"affected\": 1\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
